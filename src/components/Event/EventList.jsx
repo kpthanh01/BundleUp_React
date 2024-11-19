@@ -1,11 +1,15 @@
+import { Link } from "react-router-dom";
+
 const EventList = (props) => {
-  const { eventList } = props;
+  const { eventList, handleViewEvent } = props;
 
   const events = eventList.map((eventItem) => (
     <div key={eventItem._id}>
       <h3>{eventItem.eventTitle}</h3>
       <p>{eventItem.description}</p>
-      <button>View</button>
+      <Link to={`/events/${eventItem._id}`}>
+        <button onClick={() => handleViewEvent(eventItem)}>View</button>
+      </Link>
     </div>
   ));
 
