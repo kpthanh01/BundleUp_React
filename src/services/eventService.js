@@ -1,5 +1,5 @@
 import axios from "axios";
-const BACKEND_URL = import.meta.env.VITE_BACK_END_SERVER_URL;
+const BACKEND_URL = import.meta.env.VITE_EXPRESS_BACKEND_URL;
 const BASE_URL = `${BACKEND_URL}/events`;
 
 const index = async () => {

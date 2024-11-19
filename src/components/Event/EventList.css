@@ -1,0 +1,89 @@
+.eventListCard {
+  background-color: #f4f7f6;
+  padding: 10px;
+  margin: 20px;
+  gap: 20px;
+  box-shadow: 0 4px 8px #251a2a;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+body {
+  background-color: #3d2b46;
+  color: #251a2a;
+  font-family: "Arial", sans-serif;
+}
+
+#eventListImg {
+  border-radius: 10px;
+}
+
+.eventListDetailsContainer {
+  justify-self: center;
+  align-self: center;
+}
+
+button {
+  background-color: #6edb9c;
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+}
+
+#eventHeader {
+  color: #f4f7f6;
+  font-size: 40px;
+}
+
+.eventDetailCard {
+  background-color: #f4f7f6;
+  padding: 10px;
+  margin: 20px;
+  gap: 20px;
+  box-shadow: 0 4px 8px #251a2a;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.eventDetailCardInfo {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.eventCategoryAuthor {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+#category {
+  justify-self: flex-start;
+}
+
+#author {
+  justify-self: flex-end;
+}
+
+#description {
+  margin: 20px;
+}
+
+.eventDetails {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.eventDetailButtons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 20px 0px;
+  gap: 20px;
+}
+
+#closeEventDetails {
+  margin: 5px;
+  justify-self: center;
+  align-self: center;
+}

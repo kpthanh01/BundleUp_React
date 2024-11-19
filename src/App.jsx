@@ -8,9 +8,8 @@ import SignupForm from "./components/Forms/SignupForm";
 import EventList from "./components/Event/EventList";
 import EventDetail from "./components/Event/EventDetail";
 import * as eventService from "./services/eventService";
-import DealList from './components/Deal/DealList';
-import * as dealService from './services/dealService';
-
+import DealList from "./components/Deal/DealList";
+import * as dealService from "./services/dealService";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -32,6 +31,7 @@ function App() {
     };
     getEvents();
   }, []);
+
   useEffect(() => {
     const getDeals = async () => {
       try {
@@ -82,11 +82,7 @@ function App() {
         />
         <Route
           path="/deals"
-          element={
-            <DealList
-          dealList={dealList}
-          />
-        }
+          element={<DealList dealList={dealList} />}
         />
       </Routes>
     </>
