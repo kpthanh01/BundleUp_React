@@ -1,10 +1,12 @@
 import axios from "axios";
-const BACKEND_URL = import.meta.env.VITE_EXPRESS_BACKEND_URL;
+const BACKEND_URL = import.meta.env.VITE_BACK_END_SERVER_URL;
 const BASE_URL = `${BACKEND_URL}/events`;
 
 const index = async () => {
   try {
     const res = await axios.get(BASE_URL);
+    console.log(res);
+    console.log(BACKEND_URL);
     return res.data;
   } catch (error) {
     console.log(error);

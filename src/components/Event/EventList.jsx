@@ -1,13 +1,10 @@
 const EventList = (props) => {
   const { eventList } = props;
 
-  const events = eventList.map((event) => (
-    <div
-      key={event._id}
-      onClick={() => updateSelected(event)}
-    >
-      <h3>{event.eventTitle}</h3>
-      <p>{event.description}</p>
+  const events = eventList.map((eventItem) => (
+    <div key={eventItem._id}>
+      <h3>{eventItem.eventTitle}</h3>
+      <p>{eventItem.description}</p>
       <button>View</button>
     </div>
   ));

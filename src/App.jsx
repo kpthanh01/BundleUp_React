@@ -25,7 +25,8 @@ function App() {
         console.log(error);
       }
     };
-  });
+    getEvents();
+  }, []);
 
   return (
     <>
