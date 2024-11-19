@@ -6,12 +6,13 @@ import NavBar from "./components/Navbar/Navbar";
 import LoginForm from "./components/Forms/LoginForm";
 import SignupForm from "./components/Forms/SignupForm";
 import EventList from "./components/Event/EventList";
+import EventDetail from "./components/Event/EventDetail";
 import * as eventService from "./services/eventService";
 
 function App() {
   const [user, setUser] = useState(null);
   const [eventList, setEventList] = useState([]);
-  const [selected, setSelected] = useState(null);
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   useEffect(() => {
     const getEvents = async () => {
@@ -27,6 +28,10 @@ function App() {
     };
     getEvents();
   }, []);
+
+  const handleViewEvent = (eventItem) => {
+    setSelectedEvent(eventItem);
+  };
 
   return (
     <>
@@ -46,7 +51,16 @@ function App() {
         />
         <Route
           path="/events"
-          element={<EventList eventList={eventList} />}
+          element={
+            <EventList
+              eventList={eventList}
+              handleViewEvent={handleViewEvent}
+            />
+          }
+        />
+        <Route
+          path="/events/:eventId"
+          element={<EventDetail selectedEvent={selectedEvent} />}
         />
       </Routes>
     </>
