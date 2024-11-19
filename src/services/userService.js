@@ -4,12 +4,20 @@ const BASE_URL = `${BACKEND_URL}/users`;
 
 const create = async (formData) => {
   try {
-    const res = await axios.post(BASE_URL, formData)
+    const res = await axios.post(`${BASE_URL}/signup`, formData)
     return res.data;
   } catch (error) {
     console.log(error)
   }
 }
+const signin = async (formData) => {
+    try {
+      const res = await axios.post(`${BASE_URL}/signin`, formData)
+      return res.data;
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
 const update = async (formData, userId) => {
   try {
@@ -29,4 +37,4 @@ const deleteUser = async (userId) => {
   }
 }
 
-export { create, update, deleteUser }
+export { create, signin, update, deleteUser }
