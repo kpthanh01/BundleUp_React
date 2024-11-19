@@ -6,6 +6,7 @@ import NavBar from "./components/Navbar/Navbar";
 import LoginForm from "./components/Forms/LoginForm";
 import SignupForm from "./components/Forms/SignupForm";
 import EventList from "./components/Event/EventList";
+import EventDetail from "./components/Event/EventDetail";
 import * as eventService from "./services/eventService";
 
 function App() {
@@ -47,6 +48,10 @@ function App() {
         <Route
           path="/events"
           element={<EventList eventList={eventList} />}
+        />
+        <Route
+          path="/events/:eventId"
+          element={<EventDetail selected={selected} />}
         />
       </Routes>
     </>

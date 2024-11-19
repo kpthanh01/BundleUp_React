@@ -1,7 +1,7 @@
 const EventDetail = (props) => {
   const { selected } = props;
 
-  const attendeesNum = selected.isAttending.length;
+  const attendeesNum = 0;
 
   return (
     <div>

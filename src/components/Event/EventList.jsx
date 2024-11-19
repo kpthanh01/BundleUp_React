@@ -11,7 +11,10 @@ const EventList = (props) => {
 
   return (
     <div>
-      <h2>Event List</h2>
+      <div>
+        <h2>Event List</h2>
+        <button>Add Event</button>
+      </div>
       {!eventList.length ? <h3>No events at the moment</h3> : <ul>{events}</ul>}
     </div>
   );
