@@ -6,10 +6,12 @@ import NavBar from './components/Navbar/Navbar'
 import LoginForm from './components/Forms/LoginForm';
 import SignupForm from './components/Forms/SignupForm';
 import DealList from './components/Deal/DealList';
+import * as dealService from './services/dealService'
 
 
 function App() {
   const [user, setUser] = useState(null)
+  const [deals, setDeals] = useState([])
 
   return (
     <>

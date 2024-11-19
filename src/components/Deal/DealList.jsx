@@ -1,54 +1,7 @@
 import React from 'react';
 import './DealList.css';
 
-const DealList = () => {
-  const deals = [
-    {
-      id: 1,
-      title: '25% Off Spa Day Package',
-      description: 'Relax and rejuvenate with our exclusive spa deal.',
-      originalPrice: '$500',
-      discountedPrice: '$375',
-      image: 'https://via.placeholder.com/150',
-      link: '/deal/spa-package',
-    },
-    {
-      id: 2,
-      title: '30% Off Gourmet Dinner for Two',
-      description: 'Enjoy a luxurious dining experience at a top-rated restaurant.',
-      originalPrice: '$150',
-      discountedPrice: '$105',
-      image: 'https://via.placeholder.com/150',
-      link: '/deal/dinner-for-two',
-    },
-    {
-      id: 3,
-      title: '70% Off Fitness Membership',
-      description: 'Drop that 6 pack of beer and get that 6 pack of abs',
-      originalPrice: '$300',
-      discountedPrice: '$90',
-      image: 'https://via.placeholder.com/150',
-      link: '/deal/fitness-membership',
-    },
-    {
-      id: 4,
-      title: '40% Off Movie Tickets',
-      description: 'Enhance your movie experience with this enticing bundle deal.',
-      originalPrice: '$50',
-      discountedPrice: '$30',
-      image: 'https://via.placeholder.com/150',
-      link: '/deal/movie-tickets',
-    },
-    {
-      id: 5,
-      title: '50% Off Cabin Getaway',
-      description: 'Escape the city and unwind with this amazing travel deal.',
-      originalPrice: '$600',
-      discountedPrice: '$300',
-      image: 'https://via.placeholder.com/150',
-      link: '/deal/weekend-getaway',
-    },
-  ];
+const DealList = (props) => {
 
   return (
     <div style={{ padding: '20px', textAlign: 'center' }}>
