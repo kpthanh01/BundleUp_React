@@ -10,6 +10,7 @@ import EventDetail from "./components/Event/EventDetail";
 import * as eventService from "./services/eventService";
 import DealList from './components/Deal/DealList';
 import * as dealService from './services/dealService';
+import * as userService from "./services/userService";
 
 
 function App() {
@@ -17,6 +18,21 @@ function App() {
   const [eventList, setEventList] = useState([]);
   const [dealList, setDealList] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
+
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const users = await userService.index()
+        if (users.error) {
+          throw new Error(users.error)
+        }
+        setEventList(events)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getUser()
+  })
 
   useEffect(() => {
     const getEvents = async () => {
@@ -61,7 +77,7 @@ function App() {
         />
         <Route
           path="/login"
-          element={<LoginForm />}
+          element={<LoginForm user={user}/>}
         />
         <Route
           path="/signup"

@@ -2,7 +2,7 @@ import React from 'react'
 import './forms.css'
 import { useState } from 'react'
 
-const SignUp = () => {
+const SignUp = (props) => {
   const initialState = {
     username: "",
     password: "",
