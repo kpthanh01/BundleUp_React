@@ -9,6 +9,7 @@ const ProfileDetails = (props) => {
   }
     return (
         <div>
+            <h2>User Profile</h2>
             <Link to="/">
                 <button onClick={handleSignout}>Sign out</button>
             </Link>
