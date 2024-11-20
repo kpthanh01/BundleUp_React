@@ -42,6 +42,22 @@ function Event() {
     }
   };
 
+  const handleUpdateEvent = async (formData, eventId) => {
+    try {
+      const updatedEvent = await eventService.update(formData, eventId);
+      if (updatedEvent.error) {
+        throw new Error(updatedEvent.error);
+      }
+      const updatedEventList = eventList.map((event) =>
+        event._id !== updatedEvent._id ? event : updatedEvent
+      );
+      setEventList(updatedEventList);
+      setSelectedEvent(updatedEvent);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <Routes>
@@ -60,7 +76,13 @@ function Event() {
         />
         <Route
           path="/eventform"
-          element={<EventForm handleAddEvent={handleAddEvent} />}
+          element={
+            <EventForm
+              selectedEvent={selectedEvent}
+              handleAddEvent={handleAddEvent}
+              handleUpdateEvent={handleUpdateEvent}
+            />
+          }
         />
       </Routes>
     </>

@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const EventDetail = (props) => {
   const { selectedEvent } = props;
+  const navigate = useNavigate();
 
   const attendeesNum = selectedEvent?.isAttending?.length;
 
@@ -75,6 +76,15 @@ const EventDetail = (props) => {
           <Link to={`/events`}>
             <button>Close Details</button>
           </Link>
+          <button
+            onClick={() =>
+              navigate(`/events/eventform`, {
+                state: { eventData: selectedEvent },
+              })
+            }
+          >
+            Edit
+          </button>
         </div>
       </div>
     </div>

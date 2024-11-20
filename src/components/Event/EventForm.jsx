@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -17,12 +17,25 @@ const initialState = {
 };
 
 const EventForm = (props) => {
+  const { selectedEvent, handleAddEvent, handleUpdateEvent } = props;
   const [formData, setFormData] = useState(initialState);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const eventData = location.state?.eventData;
+    if (eventData) {
+      setFormData(eventData);
+    }
+  }, [location.state]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.handleAddEvent(formData);
+    if (selectedEvent) {
+      handleUpdateEvent(formData, selectedEvent._id);
+    } else {
+      handleAddEvent(formData);
+    }
     setFormData(initialState);
     navigate("/events");
   };
@@ -141,7 +154,9 @@ const EventForm = (props) => {
             onChange={handleChange}
           />
 
-          <button type="submit">Submit</button>
+          <button type="submit">
+            {selectedEvent ? "Update Event" : "Submit New Event"}
+          </button>
         </form>
       </div>
       <Link to={`/events`}>
