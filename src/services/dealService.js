@@ -6,8 +6,6 @@ const BASE_URL = `${BACKEND_URL}/deals`;
 const index = async () => {
   try {
     const res = await axios.get(BASE_URL);
-    console.log(res);
-    console.log(BACKEND_URL);
     return res.data;
   } catch (error) {
     console.log("Error fetching deals:", error);

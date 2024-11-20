@@ -1,5 +1,6 @@
 import React from 'react';
 import './DealList.css';
+import { Link } from 'react-router-dom';
 
 const DealList = (props) => {
   return (
@@ -17,7 +18,9 @@ const DealList = (props) => {
                 <span className="original-price">{deal.originalPrice}</span>{' '}
                 <span className="discounted-price">{deal.discountedPrice}</span>
               </p>
-              <a href={deal.link} className="deal-link">Buy Now</a>
+              <Link to={`/deals/${deal._id}`}>
+                <button onClick={() => props.handleDealSelect(deal)}>View</button>
+              </Link>
             </div>
           </div>
         ))}

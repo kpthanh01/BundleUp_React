@@ -7,28 +7,11 @@ import LoginForm from "./components/Forms/LoginForm";
 import SignupForm from "./components/Forms/SignupForm";
 import Event from "./components/Event/Event";
 import ProfileDetails from "./components/Profile/profileDetails";
-import DealList from "./components/Deal/DealList";
-import * as dealService from "./services/dealService";
+import Deal from "./components/Deal/Deal";
 import * as userService from "./services/userService";
 
 function App() {
   const [user, setUser] = useState(userService.getUser);
-  const [dealList, setDealList] = useState([]);
-
-  useEffect(() => {
-    const getDeals = async () => {
-      try {
-        const deals = await dealService.index();
-        if (deals.error) {
-          throw new Error(deals.error);
-        }
-        setDealList(deals);
-      } catch (error) {
-        console.log("Error fetching deals:", error);
-      }
-    };
-    getDeals();
-  }, []);
 
   return (
     <>
@@ -51,16 +34,17 @@ function App() {
           element={<Event />}
         />
         <Route
-          path="/deals"
-          element={<DealList dealList={dealList} />}
+          path="/deals/*"
+          element={<Deal />}
         />
         <Route
           path="/account"
           element={<ProfileDetails setUser={setUser}/>}
         />
+
       </Routes>
     </>
   );
-}
+};
 
 export default App;
