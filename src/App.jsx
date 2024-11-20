@@ -6,14 +6,12 @@ import NavBar from "./components/Navbar/Navbar";
 import LoginForm from "./components/Forms/LoginForm";
 import SignupForm from "./components/Forms/SignupForm";
 import Event from "./components/Event/Event";
-import DealList from "./components/Deal/DealList";
-import * as dealService from "./services/dealService";
+import Deal from "./components/Deal/Deal";
 import * as userService from "./services/userService";
-import DealDetails from "./components/Deal/DealDetails";
 
 function App() {
   const [user, setUser] = useState(null);
-  const [dealList, setDealList] = useState([]);
+  
 
   useEffect(() => {
     const getUser = async () => {
@@ -30,20 +28,7 @@ function App() {
     getUser();
   });
 
-  useEffect(() => {
-    const getDeals = async () => {
-      try {
-        const deals = await dealService.index();
-        if (deals.error) {
-          throw new Error(deals.error);
-        }
-        setDealList(deals);
-      } catch (error) {
-        console.log("Error fetching deals:", error);
-      }
-    };
-    getDeals();
-  }, []);
+  
 
   return (
     <>
@@ -66,17 +51,10 @@ function App() {
           element={<Event />}
         />
         <Route
-          path="/deals"
-            element={ 
-         
-            <DealList dealList={dealList} />
-              
-          }
+          path="/deals/*"
+          element={<Deal />}
           />
-          <Route
-  path="/deals/:dealId"
-  element={<DealDetails />}
-/>
+        
 
  
       </Routes>
