@@ -76,7 +76,7 @@ function App() {
           element={<Home />}
         />
         <Route
-          path="/login"
+          path="/signin"
           element={<LoginForm user={user}/>}
         />
         <Route
