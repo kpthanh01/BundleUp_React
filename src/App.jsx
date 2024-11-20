@@ -45,7 +45,7 @@ function App() {
           element={<SignupForm />}
         />
         <Route
-          path="/events"
+          path="/events/*"
           element={<Event />}
         />
         <Route
