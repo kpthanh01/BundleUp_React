@@ -21,7 +21,7 @@ function App() {
         if (users.error) {
           throw new Error(users.error);
         }
-        setEventList(events);
+        setUser(users);
       } catch (error) {
         console.log(error);
       }
