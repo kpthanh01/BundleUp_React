@@ -32,6 +32,7 @@ const signin = async (user) => {
   
       if (res.data.token) {
         localStorage.setItem('token', res.data.token)
+        console.log(res.data)
         const user = JSON.parse(atob(res.data.token.split('.')[1]));
         return user
       }
@@ -45,6 +46,18 @@ const signin = async (user) => {
     if (!token) return null;
     const user = JSON.parse(atob(token.split('.')[1]))
     return user;
+  }
+
+  const getUserData = async (userId) => {
+    try {
+      const res = await axios.get(`${BASE_URL}/${userId}`)
+      if (!res) {
+        throw new Error(res.data.error)
+      }
+      return res.data
+    } catch (error) {
+      throw error
+    }
   }
   
   const signout = () => {
@@ -70,4 +83,4 @@ const deleteUser = async (userId) => {
   }
 }
 
-export { signup, signin, signout, getUser, update, deleteUser }
+export { signup, signin, signout, getUser, getUserData, update, deleteUser }
