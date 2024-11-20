@@ -9,6 +9,7 @@ import Event from "./components/Event/Event";
 import DealList from "./components/Deal/DealList";
 import * as dealService from "./services/dealService";
 import * as userService from "./services/userService";
+import DealDetails from "./components/Deal/DealDetails";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -66,11 +67,21 @@ function App() {
         />
         <Route
           path="/deals"
-          element={<DealList dealList={dealList} />}
-        />
+            element={ 
+         
+            <DealList dealList={dealList} />
+              
+          }
+          />
+          <Route
+  path="/deals/:dealId"
+  element={<DealDetails />}
+/>
+
+ 
       </Routes>
     </>
   );
-}
+};
 
 export default App;
