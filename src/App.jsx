@@ -98,9 +98,9 @@ function App() {
         />
         <Route
           path="/deals"
-          element={
+            element={ 
             <DealList
-          dealList={dealList}
+              dealList={dealList}
           />
         }
         />
