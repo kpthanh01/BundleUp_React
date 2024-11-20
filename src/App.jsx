@@ -6,6 +6,7 @@ import NavBar from "./components/Navbar/Navbar";
 import LoginForm from "./components/Forms/LoginForm";
 import SignupForm from "./components/Forms/SignupForm";
 import Event from "./components/Event/Event";
+import ProfileDetails from "./components/Profile/profileDetails";
 import DealList from "./components/Deal/DealList";
 import * as dealService from "./services/dealService";
 import * as userService from "./services/userService";
@@ -28,11 +29,6 @@ function App() {
     };
     getDeals();
   }, []);
-
-  const handleSignout = () => {
-    authService.signout()
-    setUser(null)
-  }
 
   return (
     <>
@@ -57,6 +53,10 @@ function App() {
         <Route
           path="/deals"
           element={<DealList dealList={dealList} />}
+        />
+        <Route
+          path="/account"
+          element={<ProfileDetails setUser={setUser}/>}
         />
       </Routes>
     </>
