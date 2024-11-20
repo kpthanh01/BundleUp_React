@@ -34,10 +34,13 @@ const EventDetail = (props) => {
             <p id="author">{selectedEvent.author_id}</p>
           </div>
         </div>
-        <img
-          src={selectedEvent.image}
-          alt="Event Image"
-        />
+        <div className="eventDetailImage">
+          <img
+            src={selectedEvent.image}
+            alt="Event Image"
+            id="eventDetailImage"
+          />
+        </div>
         <h2>{selectedEvent.eventTitle}</h2>
         <div className="eventDetails">
           <div>
@@ -50,7 +53,9 @@ const EventDetail = (props) => {
             <p>{selectedEvent.location}</p>
           </div>
           <div>
-            <p>{selectedEvent.price}</p>
+            <p>
+              Price: {selectedEvent.price ? `$${selectedEvent.price}` : "Free"}
+            </p>
             <p>Number of Attendees: {attendeesNum}</p>
             <p>Attendee Limit: {selectedEvent.attendeeLimit}</p>
           </div>
