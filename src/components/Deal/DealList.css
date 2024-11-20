@@ -3,11 +3,12 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-    color: #333;
+    color: black;
   }
   .deal-list-container {
     padding: 20px;
     text-align: center;
+    background: linear-gradient(135deg, #2e3192, #1bffff);
   }
   
   .deal-list {
@@ -24,6 +25,7 @@ body {
     overflow: hidden;
     text-align: left;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f4f7f6;
   }
   
   .deal-image {
