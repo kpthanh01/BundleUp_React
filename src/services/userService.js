@@ -32,6 +32,7 @@ const signin = async (user) => {
   
       if (res.data.token) {
         localStorage.setItem('token', res.data.token)
+        localStorage.setItem('_id', res.data._id)
         console.log(res.data)
         const user = JSON.parse(atob(res.data.token.split('.')[1]));
         return user

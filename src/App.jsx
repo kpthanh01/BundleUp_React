@@ -12,7 +12,7 @@ import * as dealService from "./services/dealService";
 import * as userService from "./services/userService";
 
 function App() {
-  const [user, setUser] = useState(userService.getUser);
+  const [user, setUser] = useState(userService.getUser());
   const [dealList, setDealList] = useState([]);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ function App() {
         />
         <Route
           path="/account"
-          element={<ProfileDetails setUser={setUser}/>}
+          element={<ProfileDetails user={user} setUser={setUser}/>}
         />
       </Routes>
     </>
