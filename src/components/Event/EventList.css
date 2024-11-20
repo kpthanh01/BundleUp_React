@@ -17,9 +17,12 @@ body {
 
 #eventListImg {
   border-radius: 10px;
+  width: 100%;
+  margin: 10px;
 }
 
-.eventListDetailsContainer {
+.eventListImgContainer {
+  max-width: 300px;
   justify-self: center;
   align-self: center;
 }
@@ -82,8 +85,27 @@ button {
   gap: 20px;
 }
 
+#eventDetailImage {
+  width: 100%;
+  margin: 10px;
+  border-radius: 20px;
+}
+
+.eventDetailImage {
+  max-width: 300px;
+  justify-self: center;
+  align-self: center;
+}
+
 #closeEventDetails {
   margin: 5px;
   justify-self: center;
   align-self: center;
+}
+
+/* Form */
+.eventFormCard {
+  margin: 30px;
+  padding: 40px;
+  grid-template-columns: 1fr;
 }

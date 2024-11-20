@@ -27,7 +27,7 @@ const NavBar = (props) => {
             </span>
             {user ? (
               <button>
-                <Link to={'/'} className="nav-link">Account</Link>
+                <Link to={'/account'} className="nav-link">Account</Link>
               </button>
             ) : (
               <button>

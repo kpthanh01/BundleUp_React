@@ -6,33 +6,16 @@ import NavBar from "./components/Navbar/Navbar";
 import LoginForm from "./components/Forms/LoginForm";
 import SignupForm from "./components/Forms/SignupForm";
 import Event from "./components/Event/Event";
+import ProfileDetails from "./components/Profile/profileDetails";
 import Deal from "./components/Deal/Deal";
 import * as userService from "./services/userService";
 
 function App() {
-  const [user, setUser] = useState(null);
-  
-
-  useEffect(() => {
-    const getUser = async () => {
-      try {
-        const users = await userService.index();
-        if (users.error) {
-          throw new Error(users.error);
-        }
-        setUser(users);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getUser();
-  });
-
-  
+  const [user, setUser] = useState(userService.getUser);
 
   return (
     <>
-      <NavBar />
+      <NavBar user={user}/>
       <Routes>
         <Route
           path="/"
@@ -40,11 +23,11 @@ function App() {
         />
         <Route
           path="/signin"
-          element={<LoginForm user={user} />}
+          element={<LoginForm user={user} setUser={setUser}/>}
         />
         <Route
           path="/signup"
-          element={<SignupForm />}
+          element={<SignupForm setUser={setUser}/>}
         />
         <Route
           path="/events/*"
@@ -53,10 +36,12 @@ function App() {
         <Route
           path="/deals/*"
           element={<Deal />}
-          />
-        
+        />
+        <Route
+          path="/account"
+          element={<ProfileDetails setUser={setUser}/>}
+        />
 
- 
       </Routes>
     </>
   );
