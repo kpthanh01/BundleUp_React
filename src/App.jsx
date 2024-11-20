@@ -11,23 +11,8 @@ import * as dealService from "./services/dealService";
 import * as userService from "./services/userService";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(userService.getUser);
   const [dealList, setDealList] = useState([]);
-
-  useEffect(() => {
-    const getUser = async () => {
-      try {
-        const users = await userService.getUser();
-        if (users.error) {
-          throw new Error(users.error);
-        }
-        setUser(users);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getUser();
-  });
 
   useEffect(() => {
     const getDeals = async () => {
@@ -51,7 +36,7 @@ function App() {
 
   return (
     <>
-      <NavBar />
+      <NavBar user={user}/>
       <Routes>
         <Route
           path="/"
