@@ -1,8 +1,7 @@
 import axios from "axios";
 
-const BACKEND_URL = import.meta.env.VITE_BACK_END_SERVER_URL;
+const BACKEND_URL = import.meta.env.VITE_EXPRESS_BACKEND_URL;
 const BASE_URL = `${BACKEND_URL}/deals`;
-
 
 const index = async () => {
   try {
@@ -12,10 +11,9 @@ const index = async () => {
     return res.data;
   } catch (error) {
     console.log("Error fetching deals:", error);
-    throw error; 
+    throw error;
   }
 };
-
 
 const create = async (formData) => {
   try {
@@ -27,7 +25,6 @@ const create = async (formData) => {
   }
 };
 
-
 const update = async (formData, dealId) => {
   try {
     const res = await axios.put(`${BASE_URL}/${dealId}`, formData);
@@ -37,7 +34,6 @@ const update = async (formData, dealId) => {
     throw error;
   }
 };
-
 
 const deleteDeal = async (dealId) => {
   try {

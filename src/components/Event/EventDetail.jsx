@@ -5,29 +5,73 @@ const EventDetail = (props) => {
 
   const attendeesNum = selectedEvent?.isAttending?.length;
 
+  const startDateStr = selectedEvent.startDateTime;
+  const startDateObj = new Date(startDateStr);
+  const startDate = startDateObj.toLocaleDateString("en-US");
+  const startTime = startDateObj.toLocaleTimeString("en-US", {
+    hour12: true,
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  const endDateStr = selectedEvent.endDateTime;
+  const endDateObj = new Date(endDateStr);
+  const endDate = endDateObj.toLocaleDateString("en-US");
+  const endTime = endDateObj.toLocaleTimeString("en-US", {
+    hour12: true,
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
   return (
-    <div>
-      <h2>{selectedEvent.eventTitle}</h2>
-      <img
-        src={selectedEvent.image}
-        alt="Event Image"
-      />
-      <p>{selectedEvent.author_id}</p>
-      <p>{selectedEvent.category}</p>
-      <p>{selectedEvent.startDateTime}</p>
-      <p>{selectedEvent.endDateTime}</p>
-      <p>{selectedEvent.location}</p>
-      <p>{selectedEvent.price}</p>
-      <p>{selectedEvent.description}</p>
-      <p>
-        {attendeesNum}/{selectedEvent.attendeeLimit}
-      </p>
-      <button>Attending</button>
-      <button>Not Attending</button>
-      <button>Comments</button>
-      <Link to={`/events`}>
-        <button>Close Details</button>
-      </Link>
+    <div className="eventDetailCard">
+      <div className="eventDetailCardInfo">
+        <div className="eventCategoryAuthor">
+          <div>
+            <p id="category">{selectedEvent.category}</p>
+          </div>
+          <div>
+            <p id="author">{selectedEvent.author_id}</p>
+          </div>
+        </div>
+        <img
+          src={selectedEvent.image}
+          alt="Event Image"
+        />
+        <h2>{selectedEvent.eventTitle}</h2>
+        <div className="eventDetails">
+          <div>
+            <p>
+              Start: {startDate} {startTime}
+            </p>
+            <p>
+              End: {endDate} {endTime}
+            </p>
+            <p>{selectedEvent.location}</p>
+          </div>
+          <div>
+            <p>{selectedEvent.price}</p>
+            <p>Number of Attendees: {attendeesNum}</p>
+            <p>Attendee Limit: {selectedEvent.attendeeLimit}</p>
+          </div>
+        </div>
+        <p id="description">{selectedEvent.description}</p>
+
+        <div className="eventDetailButtons">
+          <div>
+            <button>Comments</button>
+          </div>
+          <div>
+            <button>Attending</button>
+            <button>Not Attending</button>
+          </div>
+        </div>
+        <div id="closeEventDetails">
+          <Link to={`/events`}>
+            <button>Close Details</button>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };

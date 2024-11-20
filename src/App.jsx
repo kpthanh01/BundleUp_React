@@ -5,49 +5,30 @@ import Home from "./components/Home/Home";
 import NavBar from "./components/Navbar/Navbar";
 import LoginForm from "./components/Forms/LoginForm";
 import SignupForm from "./components/Forms/SignupForm";
-import EventList from "./components/Event/EventList";
-import EventDetail from "./components/Event/EventDetail";
-import * as eventService from "./services/eventService";
-import DealList from './components/Deal/DealList';
-import * as dealService from './services/dealService';
+import Event from "./components/Event/Event";
+import DealList from "./components/Deal/DealList";
+import * as dealService from "./services/dealService";
 import * as userService from "./services/userService";
-
 
 function App() {
   const [user, setUser] = useState(null);
-  const [eventList, setEventList] = useState([]);
   const [dealList, setDealList] = useState([]);
-  const [selectedEvent, setSelectedEvent] = useState(null);
 
   useEffect(() => {
     const getUser = async () => {
       try {
-        const users = await userService.index()
+        const users = await userService.index();
         if (users.error) {
-          throw new Error(users.error)
-        }
-        setEventList(events)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    getUser()
-  })
-
-  useEffect(() => {
-    const getEvents = async () => {
-      try {
-        const events = await eventService.index();
-        if (events.error) {
-          throw new Error(events.error);
+          throw new Error(users.error);
         }
         setEventList(events);
       } catch (error) {
         console.log(error);
       }
     };
-    getEvents();
-  }, []);
+    getUser();
+  });
+
   useEffect(() => {
     const getDeals = async () => {
       try {
@@ -63,10 +44,6 @@ function App() {
     getDeals();
   }, []);
 
-  const handleViewEvent = (eventItem) => {
-    setSelectedEvent(eventItem);
-  };
-
   return (
     <>
       <NavBar />
@@ -77,32 +54,19 @@ function App() {
         />
         <Route
           path="/signin"
-          element={<LoginForm user={user}/>}
+          element={<LoginForm user={user} />}
         />
         <Route
           path="/signup"
           element={<SignupForm />}
         />
         <Route
-          path="/events"
-          element={
-            <EventList
-              eventList={eventList}
-              handleViewEvent={handleViewEvent}
-            />
-          }
-        />
-        <Route
-          path="/events/:eventId"
-          element={<EventDetail selectedEvent={selectedEvent} />}
+          path="/events/*"
+          element={<Event />}
         />
         <Route
           path="/deals"
-            element={ 
-            <DealList
-              dealList={dealList}
-          />
-        }
+          element={<DealList dealList={dealList} />}
         />
       </Routes>
     </>
