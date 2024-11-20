@@ -16,7 +16,6 @@ const EventList = (props) => {
         </div>
         <div className="eventListDetailsContainer">
           <h3>{eventItem.eventTitle}</h3>
-          <p>{eventItem.description}</p>
           <Link to={`/events/${eventItem._id}`}>
             <button onClick={() => handleViewEvent(eventItem)}>View</button>
           </Link>
@@ -29,7 +28,9 @@ const EventList = (props) => {
     <div>
       <div>
         <h2 id="eventHeader">Event List</h2>
-        <button>Add Event</button>
+        <Link to={`/events/eventform`}>
+          <button>Add Event</button>
+        </Link>
       </div>
       {!eventList.length ? <h3>No events at the moment</h3> : <ul>{events}</ul>}
     </div>
