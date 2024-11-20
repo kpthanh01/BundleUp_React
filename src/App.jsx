@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const users = await userService.index();
+        const users = await userService.getUser();
         if (users.error) {
           throw new Error(users.error);
         }
@@ -44,6 +44,11 @@ function App() {
     getDeals();
   }, []);
 
+  const handleSignout = () => {
+    authService.signout()
+    setUser(null)
+  }
+
   return (
     <>
       <NavBar />
@@ -54,11 +59,11 @@ function App() {
         />
         <Route
           path="/signin"
-          element={<LoginForm user={user} />}
+          element={<LoginForm user={user} setUser={setUser}/>}
         />
         <Route
           path="/signup"
-          element={<SignupForm />}
+          element={<SignupForm setUser={setUser}/>}
         />
         <Route
           path="/events/*"
