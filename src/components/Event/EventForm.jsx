@@ -33,11 +33,13 @@ const EventForm = (props) => {
     e.preventDefault();
     if (selectedEvent) {
       handleUpdateEvent(formData, selectedEvent._id);
+      setFormData(initialState);
+      navigate(`/events/${selectedEvent._id}`);
     } else {
       handleAddEvent(formData);
+      setFormData(initialState);
+      navigate("/events");
     }
-    setFormData(initialState);
-    navigate("/events");
   };
 
   const handleChange = ({ target }) => {
