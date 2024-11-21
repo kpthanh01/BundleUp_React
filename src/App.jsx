@@ -10,10 +10,11 @@ import ProfileDetails from "./components/Profile/Profile";
 import Deal from "./components/Deal/Deal";
 import * as userService from "./services/userService";
 
+
 function App() {
   const [user, setUser] = useState(userService.getUser());
   const [userData, setUserData] = useState()
-
+  
   useEffect(() => {
     const getUserData = async (id) => {
       try {
@@ -58,6 +59,12 @@ function App() {
           path="/account"
           element={<ProfileDetails userData={userData} setUser={setUser}/>}
         />
+          
+          
+
+        
+
+ 
       </Routes>
     </>
   );
