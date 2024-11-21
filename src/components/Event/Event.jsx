@@ -1,15 +1,16 @@
 import "./EventList.css";
 import { useState, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import EventList from "./EventList";
 import EventDetail from "./EventDetail";
 import EventForm from "./EventForm";
 import * as eventService from "../../services/eventService";
 
-function Event() {
-  const [user, setUser] = useState(null);
+function Event(props) {
+  const { user } = props;
   const [eventList, setEventList] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getEvents = async () => {
@@ -58,6 +59,66 @@ function Event() {
     }
   };
 
+  const handleRemoveEvent = async (eventId) => {
+    try {
+      await eventService.deleteEvent(eventId);
+      setEventList(eventList.filter((event) => event._id !== eventId));
+      setSelectedEvent(null);
+      navigate(`/events`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleAttendEvent = async () => {
+    const isAlreadyAttending = selectedEvent?.isAttending?.includes(user._id);
+    if (!isAlreadyAttending) {
+      const updatedEventData = {
+        ...selectedEvent,
+        isAttending: [...(selectedEvent?.isAttending || []), user._id],
+      };
+
+      try {
+        const updatedEvent = await eventService.update(
+          updatedEventData,
+          selectedEvent._id
+        );
+        if (updatedEvent.error) {
+          throw new Error(updatedEvent.error);
+        }
+        setSelectedEvent(updatedEvent);
+      } catch (error) {
+        console.error("Error updating event:", error);
+      }
+    } else {
+      window.alert("You're already attending this event.");
+    }
+  };
+
+  const handleRemoveAttendee = async () => {
+    const updatedIsAttending = selectedEvent.isAttending.filter(
+      (userId) => userId !== user._id
+    );
+
+    const updatedEventData = {
+      ...selectedEvent,
+      isAttending: updatedIsAttending,
+    };
+
+    try {
+      const updatedEvent = await eventService.update(
+        updatedEventData,
+        selectedEvent._id
+      );
+      if (updatedEvent.error) {
+        throw new Error(updatedEvent.error);
+      }
+      setSelectedEvent(updatedEvent);
+    } catch (error) {
+      console.error("Error updating event:", error);
+    }
+  };
+
   return (
     <>
       <Routes>
@@ -72,7 +133,15 @@ function Event() {
         />
         <Route
           path="/:eventId"
-          element={<EventDetail selectedEvent={selectedEvent} />}
+          element={
+            <EventDetail
+              selectedEvent={selectedEvent}
+              handleRemoveEvent={handleRemoveEvent}
+              user={user}
+              handleAttendEvent={handleAttendEvent}
+              handleRemoveAttendee={handleRemoveAttendee}
+            />
+          }
         />
         <Route
           path="/eventform"

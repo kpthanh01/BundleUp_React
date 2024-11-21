@@ -1,7 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
 
 const EventDetail = (props) => {
-  const { selectedEvent } = props;
+  const {
+    selectedEvent,
+    handleRemoveEvent,
+    handleAttendEvent,
+    user,
+    handleRemoveAttendee,
+  } = props;
   const navigate = useNavigate();
 
   const attendeesNum = selectedEvent?.isAttending?.length;
@@ -68,8 +74,14 @@ const EventDetail = (props) => {
             <button>Comments</button>
           </div>
           <div>
-            <button>Attending</button>
-            <button>Not Attending</button>
+            {selectedEvent.attendeeLimit > attendeesNum ? (
+              <button onClick={() => handleAttendEvent()}>Attending</button>
+            ) : (
+              <button>Event Full</button>
+            )}
+            <button onClick={() => handleRemoveAttendee()}>
+              Not Attending
+            </button>
           </div>
         </div>
         <div id="closeEventDetails">
@@ -84,6 +96,9 @@ const EventDetail = (props) => {
             }
           >
             Edit
+          </button>
+          <button onClick={() => handleRemoveEvent(selectedEvent._id)}>
+            Delete
           </button>
         </div>
       </div>
