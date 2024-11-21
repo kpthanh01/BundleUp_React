@@ -12,26 +12,26 @@ import * as userService from "./services/userService";
 
 function App() {
   const [user, setUser] = useState(userService.getUser());
-  const [userData, setUserData] = useState()
+  const [userData, setUserData] = useState();
 
   useEffect(() => {
     const getUserData = async (id) => {
       try {
-        const userData = await userService.getUserData(id)
-        if(userData.error) {
-          throw new Error(userData.error)
+        const userData = await userService.getUserData(id);
+        if (userData.error) {
+          throw new Error(userData.error);
         }
         setUserData(userData)
       } catch (error) {
         console.log("Error fetching user:", error);
       }
-    }
-    user ? getUserData(user._id) : setUserData({})
-  }, [])
+    };
+    user ? getUserData(user._id) : setUserData({});
+  }, []);
 
   return (
     <>
-      <NavBar user={user}/>
+      <NavBar user={user} />
       <Routes>
         <Route
           path="/"
@@ -39,15 +39,20 @@ function App() {
         />
         <Route
           path="/signin"
-          element={<LoginForm user={user} setUser={setUser}/>}
+          element={
+            <LoginForm
+              user={user}
+              setUser={setUser}
+            />
+          }
         />
         <Route
           path="/signup"
-          element={<SignupForm setUser={setUser}/>}
+          element={<SignupForm setUser={setUser} />}
         />
         <Route
           path="/events/*"
-          element={<Event />}
+          element={<Event user={user} />}
         />
         <Route
           path="/deals/*"

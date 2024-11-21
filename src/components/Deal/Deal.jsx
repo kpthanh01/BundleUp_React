@@ -4,10 +4,13 @@ import DealList from "./DealList";
 import * as dealService from "../../services/dealService";
 import * as userService from "../../services/userService";
 import DealDetails from "./DealDetails";
+import DealForm from "./DealForm";
 
 const Deal = () => {
   const [dealList, setDealList] = useState([]);
   const [selectedDeal, setSelectedDeal] = useState(null);
+  const addDeal = async (deal) => {
+  }
 
   useEffect(() => {
     const getDeals = async () => {
@@ -37,6 +40,10 @@ const Deal = () => {
           path="/:dealId"
           element={<DealDetails dealList={dealList} selectedDeal={selectedDeal}/>}
         />
+        <Route
+            path="/new"
+            element={<DealForm addDeal={addDeal}  />}
+          />
       </Routes>
     </div>
   )

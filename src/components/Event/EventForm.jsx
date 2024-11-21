@@ -17,7 +17,7 @@ const initialState = {
 };
 
 const EventForm = (props) => {
-  const { selectedEvent, handleAddEvent, handleUpdateEvent } = props;
+  const { selectedEvent, handleAddEvent, handleUpdateEvent, user } = props;
   const [formData, setFormData] = useState(initialState);
   const navigate = useNavigate();
   const location = useLocation();
@@ -55,7 +55,11 @@ const EventForm = (props) => {
       <h1>New Event</h1>
       <div className="eventFormCard">
         <form onSubmit={handleSubmit}>
-          {/* <input type="hidden" name="author_id" value={userId} /> */}
+          <input
+            type="hidden"
+            name="author_id"
+            value={formData.user}
+          />
           <label htmlFor="eventTitle">Event Title:</label>
           <input
             type="text"

@@ -9,12 +9,6 @@
   grid-template-columns: repeat(2, 1fr);
 }
 
-body {
-  background-color: #3d2b46;
-  color: #251a2a;
-  font-family: "Arial", sans-serif;
-}
-
 #eventListImg {
   border-radius: 10px;
   width: 100%;
@@ -25,14 +19,6 @@ body {
   max-width: 300px;
   justify-self: center;
   align-self: center;
-}
-
-button {
-  background-color: #6edb9c;
-  padding: 10px;
-  margin: 10px;
-  border: none;
-  border-radius: 10px;
 }
 
 #eventHeader {
