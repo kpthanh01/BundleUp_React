@@ -25,7 +25,7 @@ function Event(props) {
       }
     };
     getEvents();
-  }, []);
+  }, [selectedEvent]);
 
   const handleViewEvent = (eventItem) => {
     setSelectedEvent(eventItem);
@@ -140,6 +140,7 @@ function Event(props) {
               user={user}
               handleAttendEvent={handleAttendEvent}
               handleRemoveAttendee={handleRemoveAttendee}
+              setSelectedEvent={setSelectedEvent}
             />
           }
         />
