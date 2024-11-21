@@ -11,6 +11,15 @@ const index = async () => {
   }
 };
 
+const show = async () => {
+  try {
+    const res = await axios.get(`${BASE_URL}/${eventId}`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const create = async (formData) => {
   try {
     const res = await axios.post(BASE_URL, formData);
@@ -38,4 +47,4 @@ const deleteEvent = async (eventId) => {
   }
 };
 
-export { index, create, update, deleteEvent };
+export { index, show, create, update, deleteEvent };
