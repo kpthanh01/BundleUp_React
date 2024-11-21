@@ -12,6 +12,9 @@ return (
     <div>
         <h2>User Profile</h2>
         <h3>Account information</h3>
+        <ul>
+            <li>Username: {props.userData.username}</li>
+        </ul>
         <Link to="/">
             <button onClick={handleSignout}>Sign out</button>
         </Link>
