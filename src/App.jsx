@@ -6,12 +6,29 @@ import NavBar from "./components/Navbar/Navbar";
 import LoginForm from "./components/Forms/LoginForm";
 import SignupForm from "./components/Forms/SignupForm";
 import Event from "./components/Event/Event";
-import ProfileDetails from "./components/Profile/profileDetails";
+import ProfileDetails from "./components/Profile/Profile";
 import Deal from "./components/Deal/Deal";
 import * as userService from "./services/userService";
 
 function App() {
-  const [user, setUser] = useState(userService.getUser);
+  const [user, setUser] = useState(userService.getUser());
+  const [userData, setUserData] = useState()
+
+  useEffect(() => {
+    const getUserData = async (id) => {
+      try {
+        const userData = await userService.getUserData(id)
+        if(userData.error) {
+          throw new Error(userData.error)
+        }
+        setUserData(userData)
+        console.log(userData)
+      } catch (error) {
+        console.log("Error fetching user:", error);
+      }
+    }
+    user ? getUserData(user._id) : setUserData({})
+  }, [])
 
   return (
     <>
@@ -39,12 +56,11 @@ function App() {
         />
         <Route
           path="/account"
-          element={<ProfileDetails setUser={setUser}/>}
+          element={<ProfileDetails userData={userData} setUser={setUser}/>}
         />
-
       </Routes>
     </>
   );
-};
+}
 
 export default App;
