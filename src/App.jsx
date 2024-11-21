@@ -7,11 +7,11 @@ import LoginForm from "./components/Forms/LoginForm";
 import SignupForm from "./components/Forms/SignupForm";
 import Event from "./components/Event/Event";
 import ProfileDetails from "./components/Profile/profileDetails";
-import DealList from "./components/Deal/DealList";
-import * as dealService from "./services/dealService";
+import Deal from "./components/Deal/Deal";
 import * as userService from "./services/userService";
 
 function App() {
+<<<<<<< HEAD
   const [user, setUser] = useState(userService.getUser());
   const [userData, setUserData] = useState()
   const [dealList, setDealList] = useState([]);
@@ -46,6 +46,9 @@ function App() {
     };
     getDeals();
   }, []);
+=======
+  const [user, setUser] = useState(userService.getUser);
+>>>>>>> cf18d3a915a4e5b71baee0b39b685546e3a8f049
 
   return (
     <>
@@ -68,16 +71,17 @@ function App() {
           element={<Event />}
         />
         <Route
-          path="/deals"
-          element={<DealList dealList={dealList} />}
+          path="/deals/*"
+          element={<Deal />}
         />
         <Route
           path="/account"
           element={<ProfileDetails user={user} userData={userData} setUser={setUser}/>}
         />
+
       </Routes>
     </>
   );
-}
+};
 
 export default App;
