@@ -64,9 +64,9 @@ const signin = async (user) => {
     localStorage.removeItem('token')
   }
 
-const update = async (formData, userId) => {
+const update = async (userId, formData) => {
   try {
-    const res = await axios.put(`${BASE_URL}/${userId}`, formData)
+    const res = await axios.put(`${BASE_URL}/${userId}`, formData, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
     return res.data;
   } catch (error) {
     throw error
@@ -76,7 +76,7 @@ const update = async (formData, userId) => {
 
 const deleteUser = async (userId) => {
   try {
-    const res = await axios.delete(`${BASE_URL}/${userId}`)
+    const res = await axios.delete(`${BASE_URL}/${userId}`, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
     return res.data;
   } catch (error) {
     console.log(error)

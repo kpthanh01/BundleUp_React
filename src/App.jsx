@@ -6,7 +6,7 @@ import NavBar from "./components/Navbar/Navbar";
 import LoginForm from "./components/Forms/LoginForm";
 import SignupForm from "./components/Forms/SignupForm";
 import Event from "./components/Event/Event";
-import ProfileDetails from "./components/Profile/Profile";
+import Profile from "./components/Profile/Profile";
 import Deal from "./components/Deal/Deal";
 import * as userService from "./services/userService";
 
@@ -22,7 +22,6 @@ function App() {
           throw new Error(userData.error)
         }
         setUserData(userData)
-        console.log(userData)
       } catch (error) {
         console.log("Error fetching user:", error);
       }
@@ -56,7 +55,7 @@ function App() {
         />
         <Route
           path="/account"
-          element={<ProfileDetails userData={userData} setUser={setUser}/>}
+          element={<Profile userData={userData} setUser={setUser}/>}
         />
       </Routes>
     </>

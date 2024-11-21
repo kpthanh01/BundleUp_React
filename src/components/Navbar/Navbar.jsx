@@ -25,7 +25,7 @@ const NavBar = (props) => {
             <span>
               <a className="nav-link">FAQ</a>
             </span>
-            {user ? (
+            {localStorage.token ? (
               <button>
                 <Link to={'/account'} className="nav-link">Account</Link>
               </button>
