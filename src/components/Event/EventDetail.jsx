@@ -74,7 +74,11 @@ const EventDetail = (props) => {
             <button>Comments</button>
           </div>
           <div>
-            <button onClick={() => handleAttendEvent()}>Attending</button>
+            {selectedEvent.attendeeLimit > attendeesNum ? (
+              <button onClick={() => handleAttendEvent()}>Attending</button>
+            ) : (
+              <button>Event Full</button>
+            )}
             <button onClick={() => handleRemoveAttendee()}>
               Not Attending
             </button>
