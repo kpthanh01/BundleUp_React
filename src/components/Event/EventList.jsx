@@ -15,7 +15,7 @@ const EventList = (props) => {
           />
         </div>
         <div className="eventListDetailsContainer">
-          <h3>{eventItem.eventTitle}</h3>
+          <h3 className="eventTitle">{eventItem.eventTitle}</h3>
           <Link to={`/events/${eventItem._id}`}>
             <button onClick={() => handleViewEvent(eventItem)}>View</button>
           </Link>

@@ -22,8 +22,10 @@
 }
 
 #eventHeader {
-  color: #f4f7f6;
+  color: #007bff;
   font-size: 40px;
+  margin: 20px;
+  margin-top: 30px;
 }
 
 .eventDetailCard {
@@ -45,6 +47,12 @@
 .eventCategoryAuthor {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+}
+
+.eventTitle {
+  text-decoration: underline;
+  text-transform: capitalize;
+  margin: 20px;
 }
 
 #category {
