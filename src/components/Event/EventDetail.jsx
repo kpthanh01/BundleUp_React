@@ -7,8 +7,14 @@ const EventDetail = (props) => {
     handleAttendEvent,
     user,
     handleRemoveAttendee,
+    setSelectedEvent,
   } = props;
   const navigate = useNavigate();
+
+  const handleCloseDetails = () => {
+    setSelectedEvent(null);
+    navigate("/events");
+  };
 
   const attendeesNum = selectedEvent?.isAttending?.length;
 
@@ -85,9 +91,8 @@ const EventDetail = (props) => {
           </div>
         </div>
         <div id="closeEventDetails">
-          <Link to={`/events`}>
-            <button>Close Details</button>
-          </Link>
+          <button onClick={() => handleCloseDetails()}>Close Details</button>
+
           <button
             onClick={() =>
               navigate(`/events/eventform`, {
