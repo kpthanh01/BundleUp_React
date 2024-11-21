@@ -54,7 +54,7 @@ const EventDetail = (props) => {
             id="eventDetailImage"
           />
         </div>
-        <h2>{selectedEvent.eventTitle}</h2>
+        <h2 className="eventTitle">{selectedEvent.eventTitle}</h2>
         <div className="eventDetails">
           <div>
             <p>
