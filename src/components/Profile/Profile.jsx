@@ -1,12 +1,14 @@
 import {React, useState} from 'react';
 import * as userService from '../../services/userService'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "./Profile.css"
 
 const Profile = (props) => {
-  const [isAIVisible, setIsAIVisible] = useState(true)
+  const userId = props.userData._id
+  const [isAIVisible, setIsAIVisible] = useState(false)
   const [isAIFormVisible, setIsAIFormVisible] = useState(false)
   const [isJEVisible, setIsJEVisible] = useState(false)
+  const [isDeleteVisible, setIsDeleteVisible] = useState(false)
   const [formData, setFormData] = useState({
     username: `${props.userData.username}`,
     email: `${props.userData.email}`,
@@ -19,13 +21,30 @@ const Profile = (props) => {
         userService.signout()
         props.setUser(null)
     }
-    const handleClick = () => {
+    const handleAIClick = () => {
       isAIVisible ? setIsAIVisible(false) : setIsAIVisible(true)
+      setIsAIFormVisible(false)
+      setIsJEVisible(false)
+      setIsDeleteVisible(false)
+    }
+
+    const handleJEClick = () => {
       isJEVisible ? setIsJEVisible(false) : setIsJEVisible(true)
+      setIsAIFormVisible(false)
+      setIsAIVisible(false)
+      setIsDeleteVisible(false)
     }
 
     const formVisible = () => {
       isAIFormVisible ? setIsAIFormVisible(false) : setIsAIFormVisible(true)
+      setIsAIVisible(false)
+      setIsJEVisible(false)
+      setIsDeleteVisible(false)
+    }
+
+    const handleDClick = () => {
+      isDeleteVisible ? setIsDeleteVisible(false) : setIsDeleteVisible(true)
+      setIsAIFormVisible(false)
       setIsAIVisible(false)
       setIsJEVisible(false)
     }
@@ -41,7 +60,6 @@ const Profile = (props) => {
   
     const handleSubmit = async (e) => {
       e.preventDefault()
-      const userId = props.userData._id
       try {
         const newUserResponse = await userService.update(userId, formData)
         props.setUser(newUserResponse.user)
@@ -53,10 +71,22 @@ const Profile = (props) => {
       }
     }
 
+    const handleDelete = async () => {
+      try {
+        const deleteUser = await userService.deleteUser(id)
+        deleteUser(userId)
+        handleSignout()
+        alert("Account deleted.")
+        navigate("/")
+      } catch (error) {
+        alert("Sorry, that didn't work. Try again.")
+      }
+    }
+
 return (
     <div>
         <h2>Welcome, {props.userData.username}!</h2>
-        <h3 onClick={handleClick}>Account information</h3>
+        <h3 onClick={handleAIClick}>Account information</h3>
         {isAIVisible ? <div className='accountInfo'>
             <ul>
                 <li>Username: {props.userData.username}</li>
@@ -85,11 +115,16 @@ return (
           <button onClick={formHidden}>Cancel</button>
         </form>
         : <></>}
-        <h3 onClick={handleClick}>Joined Events</h3>
+        <h3 onClick={handleJEClick}>Joined Events</h3>
         {isJEVisible ? <div className='joinedEvents'>
           <p>{props.userData.joinedEvents}</p>
         </div> : <></>}
-        <h3>Delete Account</h3>
+        <h3 onClick={handleDClick}>Delete Account</h3>
+        {isDeleteVisible ? <div>
+        <p>Are you sure you want to delete your account? This can't be undone.</p>
+          <button onClick={handleDClick}>No, don't delete</button>
+          <button onClick={handleDelete}>Yes, please delete</button>
+        </div> : <></>}
         <Link to="/">
             <button onClick={handleSignout}>Sign out</button>
         </Link>
