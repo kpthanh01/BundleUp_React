@@ -13,7 +13,23 @@ import * as userService from "./services/userService";
 
 function App() {
   const [user, setUser] = useState(userService.getUser());
+  // const [userData, setUserData] = useState(userService.getUserData(userId))
   const [dealList, setDealList] = useState([]);
+
+  // useEffect(() => {
+  //   const getUserData = async (id) => {
+  //     try {
+  //       const userData = await userService.getUserData(userId)
+  //       if(userData.error) {
+  //         throw new Error(userData.error)
+  //       }
+  //       setUserData(userData)
+  //     } catch (error) {
+  //       console.log("Error fetching user:", error);
+  //     }
+  //   }
+  //   user ? getUserData(user._id) : setUserData({})
+  // }, [])
 
   useEffect(() => {
     const getDeals = async () => {
