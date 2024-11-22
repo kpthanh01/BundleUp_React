@@ -92,19 +92,22 @@ const EventDetail = (props) => {
         </div>
         <div id="closeEventDetails">
           <button onClick={() => handleCloseDetails()}>Close Details</button>
-
-          <button
-            onClick={() =>
-              navigate(`/events/eventform`, {
-                state: { eventData: selectedEvent },
-              })
-            }
-          >
-            Edit
-          </button>
-          <button onClick={() => handleRemoveEvent(selectedEvent._id)}>
-            Delete
-          </button>
+          {selectedEvent.author === user._id && (
+            <>
+              <button
+                onClick={() =>
+                  navigate(`/events/eventform`, {
+                    state: { eventData: selectedEvent },
+                  })
+                }
+              >
+                Edit
+              </button>
+              <button onClick={() => handleRemoveEvent(selectedEvent._id)}>
+                Delete
+              </button>
+            </>
+          )}
         </div>
       </div>
     </div>

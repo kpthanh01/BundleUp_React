@@ -21,7 +21,7 @@ function App() {
         if (userData.error) {
           throw new Error(userData.error);
         }
-        setUserData(userData)
+        setUserData(userData);
       } catch (error) {
         console.log("Error fetching user:", error);
       }
@@ -49,11 +49,21 @@ function App() {
         />
         <Route
           path="/signup"
-          element={<SignupForm setUser={setUser} setUserData={setUserData} />}
+          element={
+            <SignupForm
+              setUser={setUser}
+              setUserData={setUserData}
+            />
+          }
         />
         <Route
           path="/events/*"
-          element={<Event user={user} />}
+          element={
+            <Event
+              user={user}
+              userData={userData}
+            />
+          }
         />
         <Route
           path="/deals/*"
@@ -61,7 +71,12 @@ function App() {
         />
         <Route
           path="/account"
-          element={<Profile userData={userData} setUser={setUser} />}
+          element={
+            <Profile
+              userData={userData}
+              setUser={setUser}
+            />
+          }
         />
       </Routes>
     </>

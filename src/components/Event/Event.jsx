@@ -5,9 +5,10 @@ import EventList from "./EventList";
 import EventDetail from "./EventDetail";
 import EventForm from "./EventForm";
 import * as eventService from "../../services/eventService";
+import * as userService from "../../services/userService";
 
 function Event(props) {
-  const { user } = props;
+  const { user, userData } = props;
   const [eventList, setEventList] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const navigate = useNavigate();
@@ -83,6 +84,9 @@ function Event(props) {
           updatedEventData,
           selectedEvent._id
         );
+        let newUserForm = { ...userData };
+        newUserForm.joinedEvents.push(selectedEvent._id);
+        const updateUser = await userService.update(user._id, newUserForm);
         if (updatedEvent.error) {
           throw new Error(updatedEvent.error);
         }
