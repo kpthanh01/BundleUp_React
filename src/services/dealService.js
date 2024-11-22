@@ -15,7 +15,7 @@ const index = async () => {
 
 const create = async (formData) => {
   try {
-    const res = await axios.post(BASE_URL, formData);
+    const res = await axios.post(BASE_URL, formData, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}});
     return res.data;
   } catch (error) {
     console.log("Error creating deal:", error);
@@ -25,7 +25,7 @@ const create = async (formData) => {
 
 const update = async (formData, dealId) => {
   try {
-    const res = await axios.put(`${BASE_URL}/${dealId}`, formData);
+    const res = await axios.put(`${BASE_URL}/${dealId}`, formData, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}});
     return res.data;
   } catch (error) {
     console.log("Error updating deal:", error);
@@ -35,7 +35,7 @@ const update = async (formData, dealId) => {
 
 const deleteDeal = async (dealId) => {
   try {
-    const res = await axios.delete(`${BASE_URL}/${dealId}`);
+    const res = await axios.delete(`${BASE_URL}/${dealId}`, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}});
     return res.data;
   } catch (error) {
     console.log("Error deleting deal:", error);
