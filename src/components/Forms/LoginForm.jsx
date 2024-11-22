@@ -27,7 +27,6 @@ const Login = (props) => {
       const user = await userService.signin(formData)
 
       props.setUser(user);
-      console.log(user)
       if (user) {
         navigate('/');
       }
