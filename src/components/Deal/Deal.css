@@ -1,0 +1,257 @@
+/* DealFrom Component */
+
+.deal-form-header {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #007bff;
+}
+
+.deal-form {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+
+  textarea {
+    height: 100px;
+    resize: none;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+
+  button {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+}
+
+
+/* Deal List Component */
+
+.deal-list-container {
+  padding: 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #2e3192, #1bffff);
+}
+
+.deal-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.deal-item {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  width: 300px;
+  overflow: hidden;
+  text-align: left;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f4f7f6;
+}
+
+.deal-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.deal-content {
+  padding: 15px;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.discounted-price {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.deal-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+}
+
+/* Deal Detail Component */
+.deal-details-container {
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.deal-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.deal-header button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #685a5a;
+  cursor: pointer;
+}
+
+.deal-header button:hover {
+  background-color: #ddd;
+}
+
+.deal-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.deal-main {
+  margin-bottom: 20px;
+}
+
+.deal-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.deal-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.deal-info button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #685a5a;
+  cursor: pointer;
+}
+
+.deal-info button:hover {
+  background-color: #ddd;
+}
+
+.deal-description {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  margin-bottom: 20px;
+}
+
+.deal-actions {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.deal-actions .deal-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.deal-actions .deal-button:hover {
+  background-color: #0056b3;
+}
+
+.deal-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.deal-footer button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.deal-footer .deal-close {
+  background-color: #f4f4f4;
+}
+
+.deal-footer .deal-close:hover {
+  background-color: #ddd;
+}
+
+.deal-footer .deal-edit {
+  background-color: #ffc107;
+  color: black;
+}
+
+.deal-footer .deal-edit:hover {
+  background-color: #e0a800;
+}
+
+.deal-footer .deal-delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.deal-footer .deal-delete:hover {
+  background-color: #bd2130;
+}

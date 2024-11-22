@@ -31,7 +31,7 @@ const Login = (props) => {
       if (user) {
         navigate('/');
       }
-      } catch (err) {
+    } catch (err) {
       updateMessage(err.message);
     }
   };
@@ -43,22 +43,18 @@ const Login = (props) => {
       <form>
         <div className="form-group">
           <label htmlFor="username">Username</label>
-          <input type="text" name="username" id="username" placeholder="Enter your username" onChange={handleChange}/>
+          <input type="text" name="username" id="username" placeholder="Enter your username" onChange={handleChange} />
         </div>
         <div className="form-group">
           <label htmlFor="password">Password</label>
-          <input type="password" name="password" id="password" placeholder="Enter your password" onChange={handleChange}/>
-        </div>
-        <div className="form-group">
-          <input type="checkbox" id="check" onChange={handleChange}/>
-          <label htmlFor="check">Check me out</label>
+          <input type="password" name="password" id="password" placeholder="Enter your password" onChange={handleChange} />
         </div>
         <Link to="/">
-        <button type="submit" className="btn" onClick={handleSubmit}>Sign In</button>
+          <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Sign In</button>
         </Link>
       </form>
       <p>
-        If you do not have an account, then <a href="/signup">Sign-Up here</a>
+        If you do not have an account, then <Link to={"/signup"}>Sign-Up here</Link>
       </p>
     </div>
   );

@@ -1,5 +1,4 @@
 import React from 'react';
-import './DealList.css';
 import { Link } from 'react-router-dom';
 
 const DealList = (props) => {
@@ -7,6 +6,9 @@ const DealList = (props) => {
     <div className="deal-list-container">
       <h1>Top Deals on BundleUp</h1>
       <p>Explore incredible savings on your favorite activities and services!</p>
+      <Link to={`/deals/dealForm`}>
+        <button>Add Deals</button>
+      </Link>
       <div className="deal-list">
         {props.dealList.map((deal) => (
           <div key={deal.id} className="deal-item">

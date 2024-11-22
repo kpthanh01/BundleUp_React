@@ -42,23 +42,23 @@ const SignUp = (props) => {
       <form>
         <div className="form-group">
           <label htmlFor="username">Username</label>
-          <input type="username" name="username" id="username" placeholder="Enter username" onChange={handleChange}/>
+          <input type="username" name="username" id="username" placeholder="Enter username" onChange={handleChange} />
         </div>
         <div className="form-group">
           <label htmlFor="email">Email address</label>
-          <input type="email" name="email" id="email" placeholder="Enter your email" onChange={handleChange}/>
+          <input type="email" name="email" id="email" placeholder="Enter your email" onChange={handleChange} />
         </div>
         <div className="form-group">
           <label htmlFor="password">Password</label>
-          <input type="password" name="password" id="password" placeholder="Enter your password" onChange={handleChange}/>
+          <input type="password" name="password" id="password" placeholder="Enter your password" onChange={handleChange} />
         </div>
         <div className="form-group">
           <label htmlFor="phoneNumber">Phone Number</label>
-          <input type="phoneNumber" name="phoneNumber" id="phoneNumber" placeholder="Enter your phone number" onChange={handleChange}/>
+          <input type="phoneNumber" name="phoneNumber" id="phoneNumber" placeholder="Enter your phone number" onChange={handleChange} />
         </div>
         <div className="form-group">
           <label htmlFor="address">Address</label>
-          <input type="address" name="address" id="address" placeholder="Enter your address" onChange={handleChange}/>
+          <input type="address" name="address" id="address" placeholder="Enter your address" onChange={handleChange} />
         </div>
         <div className="form-group">
           <label htmlFor="type">Account Type:</label>
@@ -68,9 +68,9 @@ const SignUp = (props) => {
           </select >
         </div>
         <p>Note: If you are not creating an account for a business, you're probably an individual account!</p>
-        <button type="submit" className="btn" onClick={handleSubmit}>Create Account</button>
+        <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Create Account</button>
         <Link to="/">
-            <button>Cancel</button>
+          <button className='btn btn-primary'>Cancel</button>
         </Link>
       </form>
     </div>

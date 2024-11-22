@@ -2,15 +2,13 @@ import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import DealList from "./DealList";
 import * as dealService from "../../services/dealService";
-import * as userService from "../../services/userService";
 import DealDetails from "./DealDetails";
 import DealForm from "./DealForm";
+import "./Deal.css"
 
 const Deal = () => {
   const [dealList, setDealList] = useState([]);
   const [selectedDeal, setSelectedDeal] = useState(null);
-  const addDeal = async (deal) => {
-  }
 
   useEffect(() => {
     const getDeals = async () => {
@@ -25,25 +23,39 @@ const Deal = () => {
       }
     };
     getDeals();
-  }, []);
-    const handleDealSelect = (dealItem) => {
-      setSelectedDeal(dealItem);
-    };
+  }, [selectedDeal]);
+
+  const handleDealSelect = (dealItem) => {
+    setSelectedDeal(dealItem);
+  };
+
+  const handleAddDeal = async (formData) => {
+    try {
+      const newDeal = await dealService.create(formData);
+      if (newDeal.error) {
+        throw new Error(newDeal.error);
+      }
+      setDealList([newDeal, ...dealList]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <Routes>
         <Route
           path="/"
-          element={<DealList dealList={dealList} handleDealSelect={handleDealSelect}/>}
+          element={<DealList dealList={dealList} handleDealSelect={handleDealSelect} />}
         />
         <Route
           path="/:dealId"
-          element={<DealDetails dealList={dealList} selectedDeal={selectedDeal}/>}
+          element={<DealDetails dealList={dealList} selectedDeal={selectedDeal} />}
         />
         <Route
-            path="/new"
-            element={<DealForm addDeal={addDeal}  />}
-          />
+          path="/dealForm"
+          element={<DealForm handleAddDeal={handleAddDeal}/>}
+        />
       </Routes>
     </div>
   )

@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import "./EventList.css";
 
 const EventList = (props) => {
   const { eventList, handleViewEvent } = props;

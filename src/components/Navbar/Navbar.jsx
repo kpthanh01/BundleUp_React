@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom"
 
-const NavBar = (props) => {
-  const { user } = props
+const NavBar = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <span className="navbar-brand">Navbar</span>
+          <span className="navbar-brand">Bundle Up</span>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -26,11 +25,11 @@ const NavBar = (props) => {
               <a className="nav-link">FAQ</a>
             </span>
             {localStorage.token ? (
-              <button>
+              <button className="btn btn-outline-success">
                 <Link to={'/account'} className="nav-link">Account</Link>
               </button>
             ) : (
-              <button>
+              <button className="btn btn-outline-success">
                 <Link to={'/signin'} className="nav-link">Sign In</Link>
               </button>
             )}

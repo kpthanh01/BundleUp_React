@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./DealForm.css";
 
 const initialState = {
-  dealTitle: "",
+  title: "",
   category: "",
   description: "",
-  originalPrice: "",
-  discountPrice: "",
+  original_price: "",
+  discount_price: "",
 };
 
 const DealForm = (props) => {
@@ -16,9 +15,9 @@ const DealForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.addDeal(formData); 
+    props.handleAddDeal(formData);
     setFormData(initialState);
-    navigate("/deals"); 
+    navigate("/deals");
   };
 
   const handleChange = ({ target }) => {
@@ -27,13 +26,13 @@ const DealForm = (props) => {
 
   return (
     <main>
-      <h1>New Deal</h1>
-      <form onSubmit={handleSubmit}>
+      <h1 className="deal-form-header">New Deal</h1>
+      <form className="deal-form" onSubmit={handleSubmit}>
         <label htmlFor="dealTitle">Deal Title:</label>
         <input
           type="text"
           id="dealTitle"
-          name="dealTitle"
+          name="title"
           value={formData.dealTitle}
           onChange={handleChange}
           required
@@ -70,7 +69,7 @@ const DealForm = (props) => {
         <input
           type="number"
           id="originalPrice"
-          name="originalPrice"
+          name="original_price"
           value={formData.originalPrice}
           onChange={handleChange}
           required
@@ -80,7 +79,7 @@ const DealForm = (props) => {
         <input
           type="number"
           id="discountPrice"
-          name="discountPrice"
+          name="discount_price"
           value={formData.discountPrice}
           onChange={handleChange}
           required

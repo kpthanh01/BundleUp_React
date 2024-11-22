@@ -1,4 +1,4 @@
-import "./EventList.css";
+import "./Event.css";
 import { useState, useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import EventList from "./EventList";
