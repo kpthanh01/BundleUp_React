@@ -49,7 +49,7 @@ function App() {
         />
         <Route
           path="/signup"
-          element={<SignupForm setUser={setUser} />}
+          element={<SignupForm setUser={setUser} setUserData={setUserData} />}
         />
         <Route
           path="/events/*"
