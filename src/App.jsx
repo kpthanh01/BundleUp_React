@@ -43,12 +43,13 @@ function App() {
             <LoginForm
               user={user}
               setUser={setUser}
+              setUserData={setUserData}
             />
           }
         />
         <Route
           path="/signup"
-          element={<SignupForm setUser={setUser} />}
+          element={<SignupForm setUser={setUser} setUserData={setUserData} />}
         />
         <Route
           path="/events/*"

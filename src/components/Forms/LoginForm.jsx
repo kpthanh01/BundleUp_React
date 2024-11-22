@@ -25,9 +25,10 @@ const Login = (props) => {
     e.preventDefault();
     try {
       const user = await userService.signin(formData)
+      const userData = await userService.getUserData(user._id)
 
       props.setUser(user);
-      console.log(user)
+      props.setUserData(userData)
       if (user) {
         navigate('/');
       }

@@ -28,7 +28,9 @@ const SignUp = (props) => {
     e.preventDefault()
     try {
       const newUserResponse = await userService.signup(formData)
+      const userData = await userService.getUserData(newUserResponse._id)
       props.setUser(newUserResponse.user)
+      props.setUserData(userData)
       navigate('/')
     } catch (err) {
       updateMessage(err.message)

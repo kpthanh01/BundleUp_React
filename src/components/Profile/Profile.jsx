@@ -20,6 +20,7 @@ const Profile = (props) => {
   const handleSignout = () => {
     userService.signout()
     props.setUser(null)
+    props.setUserData(null)
   }
   const handleAIClick = () => {
     isAIVisible ? setIsAIVisible(false) : setIsAIVisible(true)
