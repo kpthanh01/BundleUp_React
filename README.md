@@ -1,5 +1,5 @@
 # BundleUp
-screenshot here
+<img width="1470" alt="Screenshot 2024-11-22 at 10 45 50 AM" src="https://github.com/user-attachments/assets/e155e5c4-4098-43a9-a823-2fb13f2f5dcd">
 
 ## Description
 BundleUp is a website aimed at bringing prices down for the consumers by buying in mass. This applies to groupon style events, promises of contribution as consumers "go in" on buying large quantities of a product to get the best deal, posting events and deals you find as a consumer or offers as a vendor, and so much more! As people living in this turbulent time, our group likes buying smart - whether that's through costco deals or groupon. BundleUp is our solution for finding a way to easily access the best deals on the market.
