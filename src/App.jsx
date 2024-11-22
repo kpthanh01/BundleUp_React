@@ -60,7 +60,7 @@ function App() {
         />
         <Route
           path="/account"
-          element={<Profile userData={userData} setUser={setUser}/>}
+          element={<Profile userData={userData} setUser={setUser} />}
         />
       </Routes>
     </>

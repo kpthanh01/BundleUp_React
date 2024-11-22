@@ -3,7 +3,6 @@ const BACKEND_URL = import.meta.env.VITE_EXPRESS_BACKEND_URL;
 const BASE_URL = `${BACKEND_URL}/users`;
 
 const signup = async (formData) => {
-  console.log(`test user sign in:`, formData)
   try {
     const res = await axios.post(`${BASE_URL}/signup`, formData)
     if (res.data.error) {
@@ -16,14 +15,12 @@ const signup = async (formData) => {
       return user
     }
     return res.data
-  } catch (err) {
-    console.log(err)
-    throw err
+  } catch (error) {
+    console.log(error)
   }
 }
 
 const signin = async (user) => {
-  console.log(`test user sign in:`, user)
     try {
       const res = await axios.post(`${BASE_URL}/signin`, user)
       if (res.data.error) {
@@ -32,7 +29,6 @@ const signin = async (user) => {
   
       if (res.data.token) {
         localStorage.setItem('token', res.data.token)
-        console.log(res.data)
         const user = JSON.parse(atob(res.data.token.split('.')[1]));
         return user
       }
@@ -56,7 +52,7 @@ const signin = async (user) => {
       }
       return res.data
     } catch (error) {
-      throw error
+      console.log(error)
     }
   }
   
@@ -69,7 +65,6 @@ const update = async (userId, formData) => {
     const res = await axios.put(`${BASE_URL}/${userId}`, formData, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
     return res.data;
   } catch (error) {
-    throw error
     console.log(error)
   }
 }

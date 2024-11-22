@@ -102,4 +102,17 @@
   margin: 30px;
   padding: 40px;
   grid-template-columns: 1fr;
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
 }

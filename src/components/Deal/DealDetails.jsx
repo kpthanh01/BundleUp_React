@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import "./DealDetails.css";
+import { Link } from "react-router-dom";
 
 const DealDetails = (props) => {
-const { dealList, selectedDeal } = props;
+  const { selectedDeal } = props;
   return (
     <div className="deal-details-container">
       <div className="deal-header">
@@ -14,7 +12,7 @@ const { dealList, selectedDeal } = props;
 
       <div className="deal-image">
         <img
-          src="https://via.placeholder.com/" 
+          src="https://via.placeholder.com/"
           alt={selectedDeal.title}
         />
       </div>
