@@ -4,7 +4,9 @@ const BASE_URL = `${BACKEND_URL}/events`;
 
 const index = async () => {
   try {
-    const res = await axios.get(BASE_URL);
+    const res = await axios.get(BASE_URL, {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    });
     return res.data;
   } catch (error) {
     console.log(error);
@@ -22,7 +24,9 @@ const show = async () => {
 
 const create = async (formData) => {
   try {
-    const res = await axios.post(BASE_URL, formData);
+    const res = await axios.post(BASE_URL, formData, {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    });
     return res.data;
   } catch (error) {
     console.log(error);
@@ -31,7 +35,9 @@ const create = async (formData) => {
 
 const update = async (formData, eventId) => {
   try {
-    const res = await axios.put(`${BASE_URL}/${eventId}`, formData);
+    const res = await axios.put(`${BASE_URL}/${eventId}`, formData, {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    });
     return res.data;
   } catch (error) {
     console.log(error);
@@ -40,7 +46,9 @@ const update = async (formData, eventId) => {
 
 const deleteEvent = async (eventId) => {
   try {
-    const res = await axios.delete(`${BASE_URL}/${eventId}`);
+    const res = await axios.delete(`${BASE_URL}/${eventId}`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    });
     return res.data;
   } catch (error) {
     console.log(error);

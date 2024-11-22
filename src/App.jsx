@@ -21,7 +21,7 @@ function App() {
         if (userData.error) {
           throw new Error(userData.error);
         }
-        setUserData(userData)
+        setUserData(userData);
       } catch (error) {
         console.log("Error fetching user:", error);
       }
@@ -60,7 +60,12 @@ function App() {
         />
         <Route
           path="/account"
-          element={<Profile userData={userData} setUser={setUser}/>}
+          element={
+            <Profile
+              userData={userData}
+              setUser={setUser}
+            />
+          }
         />
       </Routes>
     </>
